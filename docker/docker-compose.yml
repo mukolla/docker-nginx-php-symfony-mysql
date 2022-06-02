@@ -29,7 +29,7 @@ services:
     depends_on:
       - php
     ports:
-      - 80:80
+      - 8186:80
       - 443:443
 #MYSQL 8.0.19
   mysql:
@@ -45,7 +45,7 @@ services:
     volumes:
       - mysql_volume:/var/lib/mysql
     ports:
-      - 3306:3306
+      - 3305:3306
 
 volumes:
   mysql_volume:
