@@ -1,4 +1,4 @@
-FROM php:7.4-fpm
+FROM php:8.1.0-fpm
 
 RUN apt-get update && apt-get install -y \
         git \
@@ -24,16 +24,6 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install mysqli \
     && docker-php-ext-install zip \
     && docker-php-source delete
-
-RUN curl -L -o /tmp/redis.tar.gz https://github.com/phpredis/phpredis/archive/5.1.1.tar.gz \
-    && tar xfz /tmp/redis.tar.gz \
-    && rm -r /tmp/redis.tar.gz \
-    && mkdir -p /usr/src/php/ext \
-    && mv phpredis-5.1.1 /usr/src/php/ext/redis \
-    && docker-php-ext-install redis
-
-RUN     pecl install xdebug \
-        && docker-php-ext-enable xdebug
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
